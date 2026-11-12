@@ -1,0 +1,15 @@
+{
+  "name": "shanthi-kasiraj-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio and consultation site for Shanthi Kasiraj — Certified Fitness Coach & Nutritionist.",
+  "scripts": {
+    "setup": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n API,WEB -c magenta,cyan \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
