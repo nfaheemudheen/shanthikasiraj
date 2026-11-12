@@ -4936,7 +4936,7 @@ body,
     display: flex;
     min-height: auto;
     gap: 0;
-    padding-block: 42px 34px;
+    padding-block: 52px 42px;
   }
 
   .hero--clean .hero__clean-content {
@@ -4953,8 +4953,8 @@ body,
 
   .hero--clean .hero__clean-title {
     max-width: 100%;
-    margin-top: 18px;
-    font-size: clamp(3.15rem, 15vw, 5rem);
+    margin-top: 22px;
+    font-size: clamp(3.55rem, 17vw, 5.7rem);
     line-height: 0.84;
   }
 
@@ -4984,9 +4984,9 @@ body,
 
   .hero--clean .hero__clean-photo {
     order: 2;
-    width: min(100%, 340px);
-    height: min(112vw, 430px);
-    margin: 0 auto 38px;
+    width: min(100%, 380px);
+    height: min(135vw, 500px);
+    margin: 0 auto 46px;
   }
 
   .hero--clean .hero__clean-bottom {
@@ -5210,7 +5210,7 @@ body,
   }
 
   .hero--clean .hero__clean-title {
-    font-size: clamp(2.8rem, 15vw, 4.2rem);
+    font-size: clamp(3.2rem, 17vw, 5rem);
   }
 
   .hero--clean .hero__clean-stats > div,
