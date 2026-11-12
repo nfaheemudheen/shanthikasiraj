@@ -78,31 +78,33 @@ export default function Reels() {
                 <span>subscribers strong</span>
               </div>
             </div>
-            <div className="rail-controls">
-              <button
-                type="button"
-                className="rail-btn"
-                aria-label="Previous reels"
-                onClick={() => scrollBy(-1)}
-                disabled={edges.start}
-              >
-                <Icon name="chevronLeft" size={20} />
-              </button>
-              <button
-                type="button"
-                className="rail-btn"
-                aria-label="More reels"
-                onClick={() => scrollBy(1)}
-                disabled={edges.end}
-              >
-                <Icon name="chevronRight" size={20} />
-              </button>
-            </div>
           </div>
         </div>
       </div>
 
       <div className="reels__rail-wrap">
+        <div className="reels__controls-row" aria-label="Reel navigation">
+          <div className="rail-controls">
+            <button
+              type="button"
+              className="rail-btn"
+              aria-label="Previous reels"
+              onClick={() => scrollBy(-1)}
+              disabled={edges.start}
+            >
+              <Icon name="chevronLeft" size={20} />
+            </button>
+            <button
+              type="button"
+              className="rail-btn"
+              aria-label="More reels"
+              onClick={() => scrollBy(1)}
+              disabled={edges.end}
+            >
+              <Icon name="chevronRight" size={20} />
+            </button>
+          </div>
+        </div>
         <div className="reels__rail" ref={railRef}>
           {reels.map((reel, index) => (
             <a

@@ -1332,6 +1332,27 @@ button {
   flex: none;
 }
 
+.reels__controls-row {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: max(12px, calc((100vw - var(--container)) / 2 - 24px));
+  left: max(12px, calc((100vw - var(--container)) / 2 - 24px));
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.reels__controls-row .rail-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: none;
+}
+
+.reels__controls-row .rail-btn {
+  pointer-events: auto;
+}
+
 .reels__count {
   display: flex;
   align-items: center;
@@ -5081,21 +5102,29 @@ body,
   }
 
   .reels__aside {
-    align-items: flex-end;
+    align-items: flex-start;
+  }
+
+  .reels__controls-row {
+    top: 50%;
+    right: max(0px, calc((100% - min(72vw, 300px)) / 2 - 50px));
+    left: max(0px, calc((100% - min(72vw, 300px)) / 2 - 50px));
+    margin-top: 0;
   }
 
   .reels__rail-wrap {
-    margin-inline: -16px;
+    margin-top: 14px;
+    margin-inline: 0;
   }
 
   .reels__rail {
     gap: 12px;
-    padding-inline: 16px;
+    padding-inline: calc((100% - min(72vw, 300px)) / 2);
     scroll-snap-type: x mandatory;
   }
 
   .reel-card {
-    flex: 0 0 min(72vw, 280px);
+    flex: 0 0 min(72vw, 300px);
     scroll-snap-align: start;
   }
 
@@ -5234,11 +5263,61 @@ body,
   }
 
   .reel-card {
-    flex-basis: 78vw;
+    flex-basis: 72vw;
+  }
+
+  .reels__rail {
+    padding-inline: 14vw;
   }
 
   .contact__info,
   .contact__form-wrap {
     padding-inline: 18px;
+  }
+}
+
+/* Mobile hero: centered copy first, then a dedicated full-screen portrait. */
+@media (max-width: 760px) {
+  .hero--clean .hero__clean-inner {
+    padding-top: 0;
+  }
+
+  .hero--clean .hero__clean-content {
+    min-height: calc(100svh - 72px);
+    justify-content: center;
+    align-items: center;
+    padding-block: 34px 42px;
+    text-align: center;
+  }
+
+  .hero--clean .hero__clean-lead {
+    max-width: 31rem;
+  }
+
+  .hero--clean .hero__clean-actions {
+    align-items: center;
+  }
+
+  .hero--clean .hero__primary-action,
+  .hero--clean .hero__text-action {
+    align-self: center;
+  }
+
+  .hero--clean .hero__clean-photo {
+    width: 100vw;
+    max-width: none;
+    height: calc(100svh - 72px);
+    margin: 0 0 0 calc(50% - 50vw);
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .hero--clean .hero__clean-photo img {
+    object-position: 58% 30%;
+  }
+
+  .hero--clean .hero__clean-bottom {
+    padding-top: 34px;
   }
 }
