@@ -40,7 +40,12 @@ export default function Faq() {
           {faqs.map((item, index) => {
             const isOpen = open === index
             return (
-              <div className={`faq-item ${isOpen ? 'is-open' : ''}`} key={item.q}>
+              <div
+                className={`faq-item ${isOpen ? 'is-open' : ''}`}
+                key={item.q}
+                onMouseEnter={() => setOpen(index)}
+                onMouseLeave={() => setOpen(-1)}
+              >
                 <h3>
                   <button
                     type="button"

@@ -38,7 +38,7 @@ export function useActiveSection(ids) {
       .map((id) => document.getElementById(id))
       .filter(Boolean)
 
-    if (!sections.length || !('IntersectionObserver' in window)) return
+    if (!sections.length) return
 
     const setActive = (id) => {
       document.querySelectorAll('[data-nav-link]').forEach((link) => {
@@ -49,17 +49,24 @@ export function useActiveSection(ids) {
       })
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-        if (visible[0]) setActive(visible[0].target.id)
-      },
-      { rootMargin: '-35% 0px -55% 0px', threshold: [0, 0.2, 0.5] },
-    )
+    const updateActive = () => {
+      const marker = window.scrollY + Math.min(160, window.innerHeight * 0.3)
+      let activeId = sections[0].id
 
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY
+        if (sectionTop <= marker) activeId = section.id
+      })
+
+      setActive(activeId)
+    }
+
+    updateActive()
+    window.addEventListener('scroll', updateActive, { passive: true })
+    window.addEventListener('resize', updateActive)
+    return () => {
+      window.removeEventListener('scroll', updateActive)
+      window.removeEventListener('resize', updateActive)
+    }
   }, [ids])
 }

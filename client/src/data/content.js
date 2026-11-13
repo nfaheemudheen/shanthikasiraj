@@ -4,6 +4,7 @@ export const navLinks = [
   { id: 'services', label: 'Services' },
   { id: 'method', label: 'Method' },
   { id: 'stories', label: 'Stories' },
+  { id: 'blog', label: 'Blog' },
   { id: 'faq', label: 'FAQ' },
   { id: 'community', label: 'Community' },
 ]
@@ -199,14 +200,6 @@ export const faqs = [
   {
     q: 'Can I train if I am postpartum or managing a health condition?',
     a: 'Yes, with the right approach. Your plan is adapted to your stage of recovery and any medical guidance. Please share your doctor’s clearance and health history in the consultation form so the programme is safe for you.',
-  },
-  {
-    q: 'How soon will I see results?',
-    a: 'Most women feel stronger, sleep better and move more confidently within the first few weeks. Visible change depends on consistency, sleep, nutrition and your starting point — the focus is on sustainable progress, not quick fixes.',
-  },
-  {
-    q: 'How do I book a consultation?',
-    a: 'Fill in the form below, call +91 83291 49126 or message on WhatsApp. I typically respond within 24 hours, Monday to Saturday, 6:00 AM – 8:00 PM.',
   },
 ]
 

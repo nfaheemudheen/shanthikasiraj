@@ -128,7 +128,6 @@ export default function Contact({ preselectedGoal, onGoalConsumed }) {
       <div className="container">
         <div className="contact__card" data-reveal>
           <div className="contact__info">
-            <div className="contact__glow" aria-hidden="true" />
             <p className="eyebrow eyebrow--light">
               <span className="status-dot" />
               Let’s begin

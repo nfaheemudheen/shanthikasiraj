@@ -71,13 +71,16 @@ export default function Reels() {
           </div>
 
           <div className="reels__aside">
-            <div className="reels__count">
-              <Icon name="youtube" size={22} />
-              <div>
-                <strong>639K+</strong>
-                <span>subscribers strong</span>
-              </div>
-            </div>
+            <a
+              className="reels__youtube"
+              href="https://www.youtube.com/@shanthikasiraj"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon name="youtube" size={20} />
+              <span>Visit YouTube</span>
+              <Icon name="arrowUpRight" size={16} />
+            </a>
           </div>
         </div>
       </div>

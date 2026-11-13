@@ -4,9 +4,6 @@ import { method } from '../data/content'
 export default function Method() {
   return (
     <section className="section method" id="method">
-      <div className="method__mark" aria-hidden="true">
-        MOVE
-      </div>
       <div className="container">
         <div className="section-head method__head">
           <div>

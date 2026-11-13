@@ -16,7 +16,8 @@ export default function Hero() {
         <div className="hero__clean-content">
           <span className="hero__clean-kicker" data-reveal style={{ '--delay': '50ms' }}>A stronger way to live</span>
           <h1 className="hero__clean-title" data-reveal style={{ '--delay': '100ms' }}>
-            Feel strong.<br /><em>Live fully.</em>
+            <span className="hero-title-line hero-title-line--primary">Feel strong.</span><br />
+            <span className="hero-title-line hero-title-line--accent"><em>Live fully.</em></span>
           </h1>
           <p className="hero__clean-lead" data-reveal style={{ '--delay': '170ms' }}>
             Fitness and nutrition coaching for women who want lasting strength, confidence and energy — without extremes.

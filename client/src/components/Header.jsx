@@ -41,9 +41,9 @@ export default function Header() {
       <header className={`site-header ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-menu-open' : ''}`}>
         <div className="container site-header__inner">
           <a href="#home" className="brand" aria-label="Shanthi Kasiraj — back to top">
-            <span className="brand__mark">SK</span>
+            <span className="brand__mark"><img src="/images/logo.jpeg" alt="" /></span>
             <span className="brand__text">
-              <strong>Shanthi</strong>
+              <strong>Shanthi Kasiraj</strong>
               <small>Fitness &amp; Wellness</small>
             </span>
           </a>
@@ -76,7 +76,6 @@ export default function Header() {
       </header>
 
       <div id="mobile-menu" className={`mobile-menu ${open ? 'is-open' : ''}`} aria-hidden={!open}>
-        <div className="mobile-menu__glow" aria-hidden="true" />
         <nav className="mobile-menu__nav" aria-label="Mobile">
           {navLinks.map((link, index) => (
             <a

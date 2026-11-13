@@ -6,6 +6,7 @@ import Services from './components/Services'
 import Reels from './components/Reels'
 import Method from './components/Method'
 import Testimonials from './components/Testimonials'
+import Blog from './components/Blog'
 import Faq from './components/Faq'
 import Community from './components/Community'
 import Contact from './components/Contact'
@@ -13,7 +14,7 @@ import Footer from './components/Footer'
 import ScrollTop from './components/ScrollTop'
 import { useActiveSection, useReveal } from './hooks/useReveal'
 
-const SECTION_IDS = ['home', 'about', 'reels', 'services', 'method', 'stories', 'faq', 'community', 'contact']
+const SECTION_IDS = ['home', 'about', 'reels', 'services', 'method', 'stories', 'blog', 'faq', 'community', 'contact']
 
 export default function App() {
   useReveal()
@@ -46,6 +47,7 @@ export default function App() {
         <Services onChoose={chooseProgramme} />
         <Method />
         <Testimonials />
+        <Blog />
         <Faq />
         <Community />
         <Contact preselectedGoal={preselectedGoal} onGoalConsumed={() => setPreselectedGoal('')} />

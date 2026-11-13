@@ -24,9 +24,9 @@ export default function Footer() {
         <div className="footer__grid">
           <div className="footer__brand">
             <a href="#home" className="brand brand--footer" aria-label="Shanthi Kasiraj — back to top">
-              <span className="brand__mark">SK</span>
+              <span className="brand__mark"><img src="/images/logo.jpeg" alt="" /></span>
               <span className="brand__text">
-                <strong>Shanthi</strong>
+                <strong>Shanthi Kasiraj</strong>
                 <small>Fitness &amp; Wellness</small>
               </span>
             </a>
@@ -87,15 +87,15 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer__wordmark" aria-hidden="true">
-        SHANTHI
-      </div>
-
       <div className="container footer__bottom">
-        <p>© {new Date().getFullYear()} Shanthi Kasiraj. All rights reserved.</p>
-        
-        <a href="#home" className="footer__top">
-          Back to top
+        <div className="footer__credits">
+          <p>© {new Date().getFullYear()} Shanthi Kasiraj. All rights reserved.</p>
+          <p>Website designed &amp; developed by <strong>Digitalix.</strong></p>
+        </div>
+
+        <a href="#home" className="footer__closing" aria-label="Back to top">
+          <span className="footer__closing-line" aria-hidden="true" />
+          A little strength, a lot of heart.
           <Icon name="arrowUp" size={14} />
         </a>
       </div>

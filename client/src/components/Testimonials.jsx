@@ -42,7 +42,6 @@ export default function Testimonials() {
 
   return (
     <section className="section stories" id="stories">
-      <div className="stories__glow" aria-hidden="true" />
       <div className="container stories__grid">
         <div className="stories__intro" data-reveal>
           <p className="eyebrow eyebrow--light">
