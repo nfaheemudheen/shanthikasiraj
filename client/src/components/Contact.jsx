@@ -40,7 +40,7 @@ const nextSteps = [
   'You receive a plan built around your life.',
 ]
 
-export default function Contact({ preselectedGoal, onGoalConsumed }) {
+export default function Contact({ preselectedGoal, onGoalConsumed, isOpen = false, onClose }) {
   const [values, setValues] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
@@ -53,6 +53,21 @@ export default function Contact({ preselectedGoal, onGoalConsumed }) {
     setValues((current) => ({ ...current, goal: preselectedGoal }))
     setErrors((current) => ({ ...current, goal: undefined }))
   }, [preselectedGoal])
+
+  useEffect(() => {
+    if (!isOpen) return undefined
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') onClose?.()
+    }
+
+    document.body.classList.add('is-contact-modal-open')
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.classList.remove('is-contact-modal-open')
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [isOpen, onClose])
 
   const update = (field, value) => {
     setValues((current) => ({ ...current, [field]: value }))
@@ -124,7 +139,12 @@ export default function Contact({ preselectedGoal, onGoalConsumed }) {
   }
 
   return (
-    <section className="section contact" id="contact">
+    <section className={`section contact ${isOpen ? 'contact--modal' : ''}`} id="contact">
+      {isOpen && (
+        <button type="button" className="contact__modal-close" onClick={onClose} aria-label="Close consultation form">
+          <Icon name="close" size={20} />
+        </button>
+      )}
       <div className="container">
         <div className="contact__card" data-reveal>
           <div className="contact__info">
@@ -407,7 +427,7 @@ export default function Contact({ preselectedGoal, onGoalConsumed }) {
                       <Icon name="check" size={12} />
                     </span>
                     <span>
-                      I’m happy for Shanthi to contact me about my enquiry. My details stay private and are
+                      I’m happy for Shanthi Kasiraj to contact me about my enquiry. My details stay private and are
                       never shared.
                     </span>
                   </label>

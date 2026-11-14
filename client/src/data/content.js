@@ -28,6 +28,12 @@ export const socials = [
     href: 'https://www.facebook.com/shanthikasiraj3362/',
     icon: 'facebook',
   },
+  {
+    label: 'LinkedIn',
+    handle: 'Shanthi Kasiraj',
+    href: 'https://www.linkedin.com/in/shanthikasiraj/',
+    icon: 'linkedin',
+  },
 ]
 
 export const stats = [

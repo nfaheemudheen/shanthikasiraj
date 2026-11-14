@@ -20,6 +20,7 @@ export default function App() {
   useReveal()
   useActiveSection(SECTION_IDS)
   const [preselectedGoal, setPreselectedGoal] = useState('')
+  const [contactOpen, setContactOpen] = useState(false)
 
   const chooseProgramme = (goal) => {
     setPreselectedGoal(goal)
@@ -39,7 +40,7 @@ export default function App() {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      <Header />
+      <Header onOpenContact={() => setContactOpen(true)} />
       <main id="main">
         <Hero />
         <About />
@@ -50,7 +51,12 @@ export default function App() {
         <Blog />
         <Faq />
         <Community />
-        <Contact preselectedGoal={preselectedGoal} onGoalConsumed={() => setPreselectedGoal('')} />
+        <Contact
+          preselectedGoal={preselectedGoal}
+          onGoalConsumed={() => setPreselectedGoal('')}
+          isOpen={contactOpen}
+          onClose={() => setContactOpen(false)}
+        />
       </main>
       <Footer />
       <ScrollTop />

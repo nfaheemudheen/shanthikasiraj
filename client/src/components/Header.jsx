@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Icon from './Icon'
 import { navLinks, contactInfo } from '../data/content'
 
-export default function Header() {
+export default function Header({ onOpenContact }) {
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
   const [open, setOpen] = useState(false)
@@ -44,7 +44,6 @@ export default function Header() {
             <span className="brand__mark"><img src="/images/logo.jpeg" alt="" /></span>
             <span className="brand__text">
               <strong>Shanthi Kasiraj</strong>
-              <small>Fitness &amp; Wellness</small>
             </span>
           </a>
 
@@ -57,10 +56,10 @@ export default function Header() {
           </nav>
 
           <div className="site-header__actions">
-            <a href="#contact" className="btn btn--accent btn--sm">
+            <button type="button" className="btn btn--accent btn--sm" onClick={onOpenContact}>
               Book a session
               <Icon name="arrowUpRight" size={16} />
-            </a>
+            </button>
             <button
               type="button"
               className="menu-toggle"

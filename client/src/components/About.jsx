@@ -29,7 +29,7 @@ export default function About() {
           <p className="eyebrow eyebrow--light"><span className="status-dot" /> About your coach</p>
           <h2>Qualifications <em>&amp; Approach</em></h2>
           <p className="about__qualifications-intro">
-            Shanthi is a certified fitness coach and nutritionist who helps women transform their bodies and routines through sustainable, realistic coaching.
+            Shanthi Kasiraj is a certified fitness coach and nutritionist who helps women transform their bodies and routines through sustainable, realistic coaching.
           </p>
 
           <div className="about__credentials">
@@ -47,7 +47,7 @@ export default function About() {
             <cite>— Shanthi Kasiraj, Founder &amp; Coach</cite>
           </blockquote>
 
-          <a href={contactInfo.phoneHref} className="about__qualifications-link">Talk to Shanthi <Icon name="arrowUpRight" size={17} /></a>
+          <a href={contactInfo.phoneHref} className="about__qualifications-link">Talk to Shanthi Kasiraj <Icon name="arrowUpRight" size={17} /></a>
         </div>
       </div>
     </section>
