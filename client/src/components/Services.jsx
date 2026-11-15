@@ -62,9 +62,6 @@ export default function Services({ onChoose }) {
         </div>
 
         <div className="services__note" data-reveal>
-          <span className="services__note-icon">
-            <Icon name="sparkle" size={22} />
-          </span>
           <p>
             Not sure which one is right for you? <a href="#contact">Tell me your goal</a> and I’ll point you
             in the right direction — no pressure.

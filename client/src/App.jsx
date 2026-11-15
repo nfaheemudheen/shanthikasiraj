@@ -13,10 +13,13 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollTop from './components/ScrollTop'
 import { useActiveSection, useReveal } from './hooks/useReveal'
+import { usePath, useRouteScroll } from './router'
+import BlogPage from './pages/BlogPage'
+import BlogPostPage from './pages/BlogPostPage'
 
 const SECTION_IDS = ['home', 'about', 'reels', 'services', 'method', 'stories', 'blog', 'faq', 'community', 'contact']
 
-export default function App() {
+function Home() {
   useReveal()
   useActiveSection(SECTION_IDS)
   const [preselectedGoal, setPreselectedGoal] = useState('')
@@ -62,4 +65,18 @@ export default function App() {
       <ScrollTop />
     </>
   )
+}
+
+export default function App() {
+  const path = usePath()
+  useRouteScroll(path)
+
+  if (path === '/blog' || path === '/blog/') return <BlogPage />
+
+  if (path.startsWith('/blog/')) {
+    const slug = decodeURIComponent(path.replace(/^\/blog\//, '').replace(/\/+$/, ''))
+    return <BlogPostPage slug={slug} />
+  }
+
+  return <Home />
 }

@@ -1,12 +1,9 @@
-import Icon from './Icon'
-
-export default function Ticker({ items, className = '', icon = 'sparkle' }) {
+export default function Ticker({ items, className = '' }) {
   const row = (hidden) => (
     <div className="ticker__row" aria-hidden={hidden || undefined}>
       {items.map((item, index) => (
         <span className="ticker__item" key={`${item}-${index}`}>
           <span>{item}</span>
-          <Icon name={icon} size={15} className="ticker__icon" />
         </span>
       ))}
     </div>

@@ -42,7 +42,8 @@ export function useActiveSection(ids) {
 
     const setActive = (id) => {
       document.querySelectorAll('[data-nav-link]').forEach((link) => {
-        const isActive = link.getAttribute('href') === `#${id}`
+        const href = link.getAttribute('href') || ''
+        const isActive = href.endsWith(`#${id}`)
         link.classList.toggle('is-active', isActive)
         if (isActive) link.setAttribute('aria-current', 'location')
         else link.removeAttribute('aria-current')

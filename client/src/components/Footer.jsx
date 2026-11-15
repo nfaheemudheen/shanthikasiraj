@@ -1,5 +1,6 @@
 import Icon from './Icon'
 import { contactInfo, navLinks, socials } from '../data/content'
+import { Link } from '../router'
 
 export default function Footer() {
   return (
@@ -15,21 +16,21 @@ export default function Footer() {
               Ready to feel <em>strong?</em>
             </h2>
           </div>
-          <a href="#contact" className="btn btn--accent">
+          <Link to="/#contact" className="btn btn--accent">
             Book your consultation
             <Icon name="arrowUpRight" size={18} />
-          </a>
+          </Link>
         </div>
 
         <div className="footer__grid">
           <div className="footer__brand">
-            <a href="#home" className="brand brand--footer" aria-label="Shanthi Kasiraj — back to top">
+            <Link to="/" className="brand brand--footer" aria-label="Shanthi Kasiraj — back to top">
               <span className="brand__mark"><img src="/images/logo.jpeg" alt="" /></span>
               <span className="brand__text">
                 <strong>Shanthi Kasiraj</strong>
                 <small>Fitness &amp; Wellness</small>
               </span>
-            </a>
+            </Link>
             <p>
               Certified fitness coach &amp; nutritionist helping women build strength, confidence and a
               lifestyle that lasts.
@@ -52,11 +53,11 @@ export default function Footer() {
           <nav className="footer__col" aria-label="Footer">
             <h3>Explore</h3>
             {navLinks.map((link) => (
-              <a key={link.id} href={`#${link.id}`}>
+              <Link key={link.id} to={link.id === 'blog' ? 'http://localhost:4173/blog' : `/#${link.id}`}>
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a href="#contact">Contact</a>
+            <Link to="/#contact">Contact</Link>
           </nav>
 
           <div className="footer__col">
@@ -93,11 +94,11 @@ export default function Footer() {
           <p>Website designed &amp; developed by <strong>Digitalix.</strong></p>
         </div>
 
-        <a href="#home" className="footer__closing" aria-label="Back to top">
+        <Link to="/" className="footer__closing" aria-label="Back to top">
           <span className="footer__closing-line" aria-hidden="true" />
           A little strength, a lot of heart.
           <Icon name="arrowUp" size={14} />
-        </a>
+        </Link>
       </div>
     </footer>
   )

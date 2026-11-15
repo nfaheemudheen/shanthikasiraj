@@ -263,7 +263,6 @@ export default function Contact({ preselectedGoal, onGoalConsumed, isOpen = fals
 
                 {formError && (
                   <p className="form-alert" role="alert">
-                    <Icon name="sparkle" size={16} />
                     {formError}
                   </p>
                 )}

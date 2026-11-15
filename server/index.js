@@ -10,6 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const PORT = process.env.PORT || 4000
 const DATA_DIR = path.join(__dirname, 'data')
 const DATA_FILE = path.join(DATA_DIR, 'submissions.json')
+const SUBSCRIBERS_FILE = path.join(DATA_DIR, 'subscribers.json')
 const CLIENT_DIST = path.join(__dirname, '..', 'client', 'dist')
 
 const app = express()
@@ -84,6 +85,34 @@ function persistSubmission(submission) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Journal newsletter list                                            */
+/* ------------------------------------------------------------------ */
+async function readSubscribers() {
+  try {
+    const raw = await fsp.readFile(SUBSCRIBERS_FILE, 'utf8')
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch (error) {
+    if (error.code === 'ENOENT') return []
+    console.error('Could not read subscribers:', error)
+    return []
+  }
+}
+
+function persistSubscriber(subscriber) {
+  writeQueue = writeQueue.catch(() => {}).then(async () => {
+    await fsp.mkdir(DATA_DIR, { recursive: true })
+    const existing = await readSubscribers()
+    if (existing.some((entry) => entry.email === subscriber.email)) return
+    existing.push(subscriber)
+    const tmp = `${SUBSCRIBERS_FILE}.tmp`
+    await fsp.writeFile(tmp, JSON.stringify(existing, null, 2), 'utf8')
+    await fsp.rename(tmp, SUBSCRIBERS_FILE)
+  })
+  return writeQueue
+}
+
+/* ------------------------------------------------------------------ */
 /*  Validation                                                         */
 /* ------------------------------------------------------------------ */
 const GOALS = [
@@ -148,8 +177,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'shanthi-kasiraj-api', uptime: process.uptime() })
 })
 
-app.post('/api/contact', rateLimit, async (req, res, next) => {
-  try {
+app.post('/api/contact', rateLimit, async (req, res, next) => {  try {
     const { errors, data } = validateContact(req.body)
 
     if (errors) {
@@ -173,6 +201,33 @@ app.post('/api/contact', rateLimit, async (req, res, next) => {
       ok: true,
       message: 'Thank you! Your consultation request has been received.',
       id: submission.id,
+    })
+  } catch (error) {
+    next(error)
+  }
+})
+
+app.post('/api/subscribe', rateLimit, async (req, res, next) => {
+  try {
+    const email = sanitize(req.body?.email).toLowerCase()
+
+    if (!EMAIL_RE.test(email)) {
+      return res.status(422).json({ ok: false, message: 'Please enter a valid email address.' })
+    }
+    if (email.length > 120) {
+      return res.status(422).json({ ok: false, message: 'That email is a little too long.' })
+    }
+
+    await persistSubscriber({
+      id: crypto.randomUUID(),
+      email,
+      source: 'journal',
+      createdAt: new Date().toISOString(),
+    })
+
+    return res.status(201).json({
+      ok: true,
+      message: 'You are on the list — see you in your inbox on Sunday.',
     })
   } catch (error) {
     next(error)
