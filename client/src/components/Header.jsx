@@ -38,7 +38,7 @@ export default function Header({ onOpenContact }) {
   }, [open])
 
   /** Journal is a real route; every other nav item is an anchor on the home page. */
-  const linkFor = (id) => (id === 'blog' ? 'http://localhost:4173/blog' : `${onJournal ? '/' : ''}#${id}`)
+  const linkFor = (id) => (id === 'blog' ? '/blog' : `${onJournal ? '/' : ''}#${id}`)
 
   return (
     <>

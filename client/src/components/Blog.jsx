@@ -1,5 +1,5 @@
 import Icon from './Icon'
-import { posts } from '../data/posts'
+import { Link } from '../router'
 
 export default function Blog() {
   return (
@@ -17,10 +17,10 @@ export default function Blog() {
             <h2>Her Space <em>Studio.</em></h2>
             <p>Practical fitness, nutrition and wellness insights for women building a stronger everyday routine.</p>
           </div>
-          <a href="http://localhost:4173/blog" className="blog__home-cta">
+            <Link to="/blog" className="blog__home-cta">
             <span>Visit the blog</span>
             <span className="blog__home-cta-icon"><Icon name="arrowUpRight" size={19} /></span>
-          </a>
+            </Link>
         </div>
       </div>
     </section>

@@ -53,7 +53,7 @@ export default function Footer() {
           <nav className="footer__col" aria-label="Footer">
             <h3>Explore</h3>
             {navLinks.map((link) => (
-              <Link key={link.id} to={link.id === 'blog' ? 'http://localhost:4173/blog' : `/#${link.id}`}>
+              <Link key={link.id} to={link.id === 'blog' ? '/blog' : `/#${link.id}`}>
                 {link.label}
               </Link>
             ))}
